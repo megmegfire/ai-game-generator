@@ -10,9 +10,9 @@ class GeminiService {
 
   async generateGame(prompt) {
     try {
-      // ✅ 最新の安定版モデルを使用
+      // ✅ 最新の Gemini 2.5 Flash を使用
       const model = this.genAI.getGenerativeModel({ 
-        model: 'gemini-1.5-flash-latest'
+        model: 'gemini-2.5-flash'
       });
 
       const systemPrompt = `あなたはHTML5ゲーム開発の専門家です。ユーザーの説明から、ブラウザで動作する完全なゲームを生成してください。
