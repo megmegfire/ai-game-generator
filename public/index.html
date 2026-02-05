@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Game Generator - AIでゲームを生成</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🎮 AI Game Generator</h1>
+            <p class="tagline">プロンプトで簡単にゲームを生成</p>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="container">
+        <!-- プロンプト入力セクション -->
+        <section class="prompt-section">
+            <div class="card">
+                <h2>🎯 ゲームを生成しよう</h2>
+                <p class="description">
+                    作りたいゲームを日本語で説明してください。AIが自動的にゲームを生成します！
+                </p>
+
+                <!-- プロンプト入力 -->
+                <div class="input-group">
+                    <label for="promptInput">ゲームの説明</label>
+                    <textarea 
+                        id="promptInput" 
+                        placeholder="例: 宇宙船を操作して隕石を避けるゲーム"
+                        rows="4"
+                    ></textarea>
+                </div>
+
+                <!-- サンプルプロンプトボタン -->
+                <div class="sample-prompts">
+                    <p class="sample-label">💡 サンプル:</p>
+                    <button class="sample-btn" data-prompt="宇宙船を操作して隕石を避けるゲーム">
+                        🚀 宇宙船ゲーム
+                    </button>
+                    <button class="sample-btn" data-prompt="りんごをキャッチして得点を稼ぐゲーム">
+                        🍎 キャッチゲーム
+                    </button>
+                    <button class="sample-btn" data-prompt="敵を撃って倒すシューティングゲーム">
+                        🔫 シューティング
+                    </button>
+                    <button class="sample-btn" data-prompt="障害物をジャンプで避けるゲーム">
+                        🏃 ジャンプゲーム
+                    </button>
+                </div>
+
+                <!-- 生成ボタン -->
+                <button id="generateBtn" class="generate-btn">
+                    <span class="btn-text">✨ ゲームを生成</span>
+                    <span class="btn-loading" style="display: none;">
+                        <span class="spinner"></span> 生成中...
+                    </span>
+                </button>
+
+                <!-- エラー表示 -->
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+            </div>
+        </section>
+
+        <!-- ゲーム表示セクション -->
+        <section id="gameSection" class="game-section" style="display: none;">
+            <div class="card">
+                <div class="game-header">
+                    <h2 id="gameTitle">生成されたゲーム</h2>
+                    <div class="game-actions">
+                        <button id="fullscreenBtn" class="action-btn" title="フルスクリーン">
+                            🖥️
+                        </button>
+                        <button id="newGameBtn" class="action-btn" title="新しいゲームを生成">
+                            🔄
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Canvasエリア -->
+                <div class="canvas-container">
+                    <canvas id="gameCanvas" width="800" height="600"></canvas>
+                </div>
+
+                <!-- ゲーム情報 -->
+                <div class="game-info">
+                    <p class="game-description" id="gameDescription"></p>
+                    <p class="game-controls">
+                        🎮 <strong>操作:</strong> 矢印キー/WASD で移動、スペースキーで決定/攻撃、R でリセット
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ギャラリーセクション -->
+        <section class="gallery-section">
+            <div class="card">
+                <h2>📚 生成したゲーム一覧</h2>
+                <div id="gameGallery" class="game-gallery">
+                    <p class="gallery-empty">まだゲームが生成されていません</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <p>Powered by Google Gemini API | Made with ❤️</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>
