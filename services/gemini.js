@@ -93,7 +93,7 @@ async function generateGame(userPrompt) {
     }
 
     // Gemini Proモデルを使用
-    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
     // システムプロンプトを構築
     const prompt = buildSystemPrompt(userPrompt);
