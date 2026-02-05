@@ -167,15 +167,20 @@ app.delete('/api/games/:id', async (req, res) => {
   }
 });
 
-// サーバー起動
-app.listen(PORT, () => {
-  console.log('🚀 AI Game Generator Server');
-  console.log(`📡 Server running on http://localhost:${PORT}`);
-  console.log(`🔑 Gemini API Key: ${process.env.GEMINI_API_KEY ? '設定済み ✅' : '未設定 ❌'}`);
-  console.log('');
-  console.log('📌 エンドポイント:');
-  console.log(`   GET  http://localhost:${PORT}/api/health`);
-  console.log(`   POST http://localhost:${PORT}/api/generate`);
-  console.log(`   GET  http://localhost:${PORT}/api/games`);
-  console.log('');
-});
+// Vercel用のエクスポート
+module.exports = app;
+
+// ローカル開発用
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log('🚀 AI Game Generator Server');
+    console.log(`📡 Server running on http://localhost:${PORT}`);
+    console.log(`🔑 Gemini API Key: ${process.env.GEMINI_API_KEY ? '設定済み ✅' : '未設定 ❌'}`);
+    console.log('');
+    console.log('📌 エンドポイント:');
+    console.log(`   GET  http://localhost:${PORT}/api/health`);
+    console.log(`   POST http://localhost:${PORT}/api/generate`);
+    console.log(`   GET  http://localhost:${PORT}/api/games`);
+    console.log('');
+  });
+}
