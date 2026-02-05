@@ -1,6 +1,7 @@
 // ===== 設定 =====
 // 本番環境とローカル環境を自動判定
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : '/api';
+
 
 
 // ===== DOM要素の取得 =====
